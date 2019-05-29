@@ -1,19 +1,19 @@
-#sqlLite 3
-# development:
-#   adapter: sqlite3
-#   pool: 5
-#   timeout: 5000
-#   database: db/development.sqlite3
-
-
-#mysql
+sqlLite 3
 development:
-  adapter: mysql2
-  encoding: utf8
-  database: cnab
-  username: root
-  password: root
-  host: localhost
+  adapter: sqlite3
+  pool: 5
+  timeout: 5000
+  database: db/development.sqlite3
+
+
+# #mysql
+# development:
+#   adapter: mysql2
+#   encoding: utf8
+#   database: cnab
+#   username: root
+#   password: root
+#   host: localhost
 
 
 #mysql
