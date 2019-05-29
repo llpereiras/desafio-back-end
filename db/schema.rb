@@ -12,10 +12,10 @@
 
 ActiveRecord::Schema.define(version: 2019_05_28_170624) do
 
-  create_table "movements", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.bigint "type_transaction_id"
-    t.bigint "recipient_id"
-    t.bigint "store_id"
+  create_table "movements", force: :cascade do |t|
+    t.integer "type_transaction_id"
+    t.integer "recipient_id"
+    t.integer "store_id"
     t.datetime "datetime"
     t.decimal "amount", precision: 8, scale: 2
     t.string "card"
@@ -27,21 +27,21 @@ ActiveRecord::Schema.define(version: 2019_05_28_170624) do
     t.index ["type_transaction_id"], name: "index_movements_on_type_transaction_id"
   end
 
-  create_table "recipients", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "recipients", force: :cascade do |t|
     t.string "name"
     t.string "cpf"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "stores", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "stores", force: :cascade do |t|
     t.string "name"
     t.string "owner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
-  create_table "type_transactions", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+  create_table "type_transactions", force: :cascade do |t|
     t.string "description"
     t.string "nature"
     t.string "sinal"
@@ -49,7 +49,4 @@ ActiveRecord::Schema.define(version: 2019_05_28_170624) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "movements", "recipients"
-  add_foreign_key "movements", "stores"
-  add_foreign_key "movements", "type_transactions"
 end
