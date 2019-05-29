@@ -1,0 +1,36 @@
+<h3>Results</h3>
+
+Linhas processadas: <%= @results[:itens] %>
+<br>
+<br>
+Sales:
+
+<table >
+  <thead>
+    <tr>
+      <th> Store </th>
+      <th> Owner </th>
+      <th> lng </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @results[:movements].each do |movement| %>
+      <tr class="<%= movement["sales"].to_f < 0 ? 'negative' : 'positive' %>">
+        <td><%= movement["name"] %></td>
+        <td><%= movement["owner"] %></td>
+        <td><%= number_to_currency(movement["sales"], :unit => "R$ ", :separator => ",", :delimiter => ".") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+<br>
+Errors: <%= @results[:errors] %>
+<br>
+<br>
+
+
+<%= link_to "New",
+            root_path %>
+
